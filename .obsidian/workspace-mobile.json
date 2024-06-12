@@ -1,0 +1,144 @@
+{
+  "main": {
+    "id": "7d1c3c718076f74d",
+    "type": "split",
+    "children": [
+      {
+        "id": "4a433b627fd2483d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "94b72af964b1c0d7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Filling the G_ap_s_ Multivariate Time Series Imputation by Graph Neural Networks.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3056ce4236d1dcbf",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "08399764265b804b",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "234f0a02e864d45d",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "a72a104b7fed75e0",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true
+          }
+        }
+      },
+      {
+        "id": "d4deba7a4d617e37",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {}
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "78c4dd7ac52c0b9c",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "56de7c83190888ba",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "Filling the G_ap_s_ Multivariate Time Series Imputation by Graph Neural Networks.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "cf4779b660e11a8f",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "Filling the G_ap_s_ Multivariate Time Series Imputation by Graph Neural Networks.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "b8752e5615bb5de6",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "Filling the G_ap_s_ Multivariate Time Series Imputation by Graph Neural Networks.md"
+          }
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false
+    }
+  },
+  "active": "94b72af964b1c0d7",
+  "lastOpenFiles": [
+    "assets/Filling the G_ap_s_ Multivariate Time Series Imputation by Graph Neural Networks/image-20240610221501465.png",
+    "assets/Filling the G_ap_s_ Multivariate Time Series Imputation by Graph Neural Networks",
+    "assets",
+    "LoRA_ Low-Rank Adaptation of Large Language Models.md",
+    "Diffusion-based Time Series Imputation and Forecasting with Structured State Space Models.md",
+    "UrbanGPT_ Spatio-Temporal Large Language Models.md"
+  ]
+}
