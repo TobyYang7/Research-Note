@@ -14,6 +14,7 @@ tags:
 >- [ ] pytorch-lightning
 >- [ ] paper
 >- [ ] discharge dataset
+>- [ ] 6.13组会讲解代码框架
 >
 ---
 
@@ -36,7 +37,7 @@ tags:
 X: 输入的时间序列数据，形状为 (T, N, F)
 M: 掩码矩阵，形状为 (T, N)
 A: 邻接矩阵，形状为 (N, N)
-X_hat 是填补后的时间序列数据，形状为 (T, N, F)
+$X_{hat}$ 是填补后的时间序列数据，形状为 (T, N, F)
 图的结构是固定的
 
 数据模块信息:
@@ -50,11 +51,23 @@ X_hat 是填补后的时间序列数据，形状为 (T, N, F)
 - in-sample imputation:  训练和验证数据来自相同的时间范围
 - out-of-sample imputation: 训练和验证数据来自不同的时间范围
 
+### Motivation
+
+- 背景：数据缺失普遍发生
+- 之前的补全方法并不能很好地捕获/利用 不同sensor之间的非线性时间/空间依赖关系
+- 文章中比较的几个baseline都不是ST model
+
+### Future Work
+
+- model假设数据是平稳的 （[[异常值检测]]？）
+- 如何确保数据确实的可靠性（白+黑）
+- virtual and active sensing?
+
 ![[image-20240610221501465.png]]
 
 ### Structure
 
-- 主要分为两个模块，GRINet捕捉时空关系，GraphFiller处理数据的填充
+- 图的结构是固定的
 - bidirectional: 沿着时间轴，同时正向计算和反向计算
 - spatial decoder: 第一层[[imputation]]为linear readout，第二层（MPNN）通过时空信息进行优化
 - [[GRU]]基本结构：
@@ -69,7 +82,7 @@ h_t &= u_t \odot h_{t-1} + (1 - u_t) \odot \tilde{h}_t
 $$
 ![[1_i-yqUwAYTo2Mz-P1Ql6MbA.webp]]
 
-- [[recurrent]]的概念: MPGRU采用GRU的框架，通过MPNN提取时空信息，然后再通过gate的结构传递时序信息
+- [[recurrent]]的概念: MPGRU采用GRU的框架，通过MPNN提取空间信息，然后再通过gate的结构传递时序信息
 
 $$
 \begin{align*}
@@ -79,6 +92,14 @@ c_t^i &= \tanh(\text{MPNN}([\hat{x}_t^{(2)i} || m_t^i || r_t^i \odot h_{t-1}^i],
 h_t^i &= u_t^i \odot h_{t-1}^i + (1 - u_t^i) \odot c_t^i
 \end{align*}
 $$
+
+- 在GRU的每层计算中，都会衔接GCN计算相邻节点的特征（重复提取K次）
+- first stage仅仅是一个linear output，在这之后衔接MPGRU，最后再套一层spatial decoder
+
+![alt text](<assets/Filling the G_ap_s_ Multivariate Time Series Imputation by Graph Neural Networks/image.png>)
+![alt text](<assets/Filling the G_ap_s_ Multivariate Time Series Imputation by Graph Neural Networks/image-1.png>)
+
+### 模型参数设置
 
 ```bash
 GraphFiller(
@@ -127,13 +148,13 @@ GraphFiller(
             (mlp): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
           )
           (lin_out): Conv1d(128, 64, kernel_size=(1,), stride=(1,))
+        (cells): ModuleList(
           (read_out): Conv1d(128, 1, kernel_size=(1,), stride=(1,))
           (activation): PReLU(num_parameters=1)
         )
         (h0): ParameterList(  (0): Parameter containing: [torch.FloatTensor of size 64x36])
       )
       (bwd_rnn): GRIL(
-        (cells): ModuleList(
           (0): GCGRUCell(
             (forget_gate): SpatialConvOrderK(
               (mlp): Conv2d(330, 64, kernel_size=(1, 1), stride=(1, 1))

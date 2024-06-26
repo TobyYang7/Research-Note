@@ -10,7 +10,8 @@ tags:
 
 > ## TODO
 >
->- [ ] code: [github](https://thuml.github.io/timer/)
+>- [ ] code: [github](https://github.com/thuml/Large-Time-Series-Model)
+>- [ ] 测试discharge data的性能
 >
 ---
 
